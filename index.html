@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Casa Tia Rosa — Enxoval com Carinho & Aconchego</title>
+  <meta name="description" content="Enxoval escolhido com carinho para seu quarto, sala e banho. Peças de qualidade, atendimento caloroso e entrega rápida.">
+  
+  <!-- Google Fonts & Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FBF7F2',
+            wine: '#8F314D',
+            wineDark: '#6F243A',
+            wineLight: '#F4E8EB',
+            rose: '#E9C9CE',
+            roseLight: '#FAF0F2',
+            sage: '#7C8C70',
+            sageLight: '#EBF0E9',
+            ink: '#2D2422',
+            muted: '#766A64',
+            borderCream: '#EFE4DC'
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['DM Sans', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 50px rgba(74,35,43,.08)',
+            card: '0 8px 24px rgba(74,35,43,.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Estilos Customizados -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="font-body antialiased bg-cream text-ink">
+
+  <!-- ========================================================== -->
+  <!-- BARRA DE DEMONSTRAÇÃO (Ideal para reuniões e clientes)     -->
+  <!-- ========================================================== -->
+  <div class="demo-control-bar">
+    <span class="text-[11px] text-rose font-bold px-2 py-0.5 border-r border-white/20 hidden sm:inline">Modo Demo:</span>
+    <button id="btnModeDesktop" class="demo-btn active">
+      <span>🖥️</span> <span>Desktop</span>
+    </button>
+    <button id="btnModeMobile" class="demo-btn">
+      <span>📱</span> <span>Simulador Mobile</span>
+    </button>
+  </div>
+
+  <!-- CONTAINER PRINCIPAL DO APP (com suporte a simulador de tela) -->
+  <div class="app-viewport-container w-full">
+    
+    <!-- NOTCH DO SMARTPHONE NO MODO DEMO -->
+    <div class="phone-notch">
+      <div class="phone-notch-speaker"></div>
+      <div class="phone-notch-camera"></div>
+    </div>
+
+    <div class="phone-screen-scroll">
+
+      <!-- FAIXA DE BENEFÍCIOS SUPERIOR -->
+      <div class="bg-wine text-white text-center text-xs py-2 px-4 tracking-wide font-medium flex items-center justify-center gap-2">
+        <span>✨</span>
+        <span>Até <b>3x sem juros</b> • Atendimento carinhoso no WhatsApp • Entregas na sua cidade</span>
+      </div>
+
+      <!-- CABEÇALHO / NAVBAR -->
+      <header class="sticky top-0 z-40 bg-cream/95 backdrop-blur-md border-b border-borderCream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+          
+          <!-- LOGOTIPO -->
+          <a href="#" onclick="scrollToSection('topo'); return false;" class="text-left shrink-0 group">
+            <div class="serif italic text-2xl sm:text-3xl text-wineDark font-bold leading-none tracking-tight group-hover:text-wine transition">
+              Casa Tia Rosa
+            </div>
+            <div class="text-[9px] uppercase tracking-[.28em] text-muted mt-1 font-semibold">
+              casa • carinho • aconchego
+            </div>
+          </a>
+
+          <!-- LINKS DE NAVEGAÇÃO DESKTOP -->
+          <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-muted">
+            <a href="#destaques" class="hover:text-wine transition">Destaques</a>
+            <a href="#colecoes" class="hover:text-wine transition">Coleções</a>
+            <a href="#produtos" class="hover:text-wine transition">Mais Vendidos</a>
+            <a href="#sobre" class="hover:text-wine transition">Nossa História</a>
+            <a href="#depoimentos" class="hover:text-wine transition">Avaliações</a>
+          </nav>
+
+          <!-- AÇÕES DO HEADER -->
+          <div class="flex items-center gap-3">
+            <a href="https://wa.me/5588999999999" target="_blank" class="hidden sm:flex items-center gap-2 text-xs font-bold text-wineDark bg-roseLight hover:bg-rose/40 px-3.5 py-2.5 rounded-full border border-rose/60 transition" title="Falar no WhatsApp">
+              <span>💬</span>
+              <span>WhatsApp</span>
+            </a>
+
+            <!-- BOTÃO DA SACOLA -->
+            <button onclick="openCart()" class="relative h-11 px-4 sm:px-5 rounded-full bg-wine text-white font-bold text-xs sm:text-sm hover:bg-wineDark flex items-center gap-2.5 shadow-sm transition active:scale-95">
+              <span>🧺</span>
+              <span class="hidden sm:inline">Minha Sacola</span>
+              <span class="cart-count-badge bg-white text-wine font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center text-[11px] shadow-xs">
+                0
+              </span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- STORIES / DESTAQUES RÁPIDOS (Estilo Instagram) -->
+      <section id="destaques" class="bg-white/60 border-b border-borderCream py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+          <div class="flex items-center gap-4 overflow-x-auto hide-scrollbar py-1" id="storiesContainer">
+            <!-- Renderizado via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- HERO SECTION -->
+      <section id="topo" class="relative overflow-hidden py-8 sm:py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_1.1fr] gap-8 sm:gap-12 items-center">
+          
+          <div class="max-w-xl">
+            <div class="inline-flex items-center gap-2 rounded-full bg-rose/50 text-wineDark px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 border border-rose">
+              <span class="w-2 h-2 rounded-full bg-wine animate-ping"></span>
+              Coleção Primavera & Inverno 2026
+            </div>
+
+            <h1 class="serif text-4xl sm:text-5xl lg:text-6xl text-ink font-bold leading-[1.05] tracking-tight">
+              Sua casa merece <em class="text-wine font-normal italic">sentir</em> o verdadeiro carinho.
+            </h1>
+
+            <p class="text-muted text-base sm:text-lg leading-relaxed mt-5">
+              Enxoval com curadoria especial para transformar o seu quarto e sua sala no refúgio mais aconchegante do mundo. Escolha com facilidade e receba em casa.
+            </p>
+
+            <div class="flex flex-wrap gap-3 mt-7">
+              <a href="#produtos" class="bg-wine text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-wineDark shadow-md hover:shadow-lg transition">
+                Ver Produtos Mais Vendidos
+              </a>
+              <a href="#colecoes" class="bg-white border border-wine/25 text-wineDark px-6 py-3.5 rounded-full font-bold text-sm hover:bg-roseLight transition">
+                Explorar Coleções
+              </a>
+            </div>
+
+            <!-- DIFERENCIAIS RÁPIDOS -->
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 mt-8 pt-6 border-t border-borderCream text-xs text-muted">
+              <div class="bg-white/80 p-3 rounded-2xl border border-borderCream">
+                <b class="block text-wineDark text-sm sm:text-base font-bold">Até 3x</b>
+                sem juros no cartão
+              </div>
+              <div class="bg-white/80 p-3 rounded-2xl border border-borderCream">
+                <b class="block text-wineDark text-sm sm:text-base font-bold">100%</b>
+                atendimento humano
+              </div>
+              <div class="bg-white/80 p-3 rounded-2xl border border-borderCream">
+                <b class="block text-wineDark text-sm sm:text-base font-bold">Direto</b>
+                para seu WhatsApp
+              </div>
+            </div>
+          </div>
+
+          <!-- IMAGEM HERO COM CARD DEPOIMENTO -->
+          <div class="relative">
+            <div class="rounded-[32px] overflow-hidden aspect-[4/3.8] shadow-soft bg-rose/30 border-4 border-white">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85" class="w-full h-full object-cover" alt="Quarto acolhedor com enxoval">
+            </div>
+            
+            <div class="absolute left-4 sm:left-7 bottom-4 sm:bottom-7 bg-white/95 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-soft max-w-[290px] border border-borderCream">
+              <div class="text-wine text-xs mb-1">★★★★★</div>
+              <p class="serif italic text-base sm:text-lg text-wineDark leading-snug">
+                “Cada peça é escolhida pensando no conforto da sua família.”
+              </p>
+              <p class="text-[10px] uppercase tracking-[.18em] text-muted mt-2 font-bold">— Tia Rosa</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEÇÃO DE CATEGORIAS / CANTINHOS -->
+      <section id="colecoes" class="bg-white border-y border-borderCream py-10 sm:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-6 sm:mb-8">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-[.18em] text-sage">Nossos Cantinhos</span>
+              <h2 class="serif text-2xl sm:text-4xl text-ink font-bold mt-0.5">Escolha por Coleção</h2>
+            </div>
+            <p class="text-xs sm:text-sm text-muted max-w-sm">
+              Navegue pelos cômodos e encontre as peças perfeitas para seu lar.
+            </p>
+          </div>
+
+          <div id="categoriesGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5">
+            <!-- Renderizado dinamicamente via JS -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEÇÃO DO CATÁLOGO DE PRODUTOS -->
+      <section id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+        
+        <!-- CABEÇALHO DO CATÁLOGO -->
+        <div class="mb-6 sm:mb-8">
+          <span class="text-xs font-bold uppercase tracking-[.18em] text-sage">Catálogo & Mais Vendidos</span>
+          <h2 class="serif text-2xl sm:text-4xl text-ink font-bold mt-0.5">Os Queridinhos da Casa</h2>
+          <p class="text-muted text-xs sm:text-sm mt-0.5">Produtos em pronta-entrega selecionados com carinho para seu lar.</p>
+        </div>
+
+        <!-- BARRA DE BUSCA E FILTROS PADRONIZADA -->
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 border border-borderCream shadow-card mb-6 space-y-3 sm:space-y-3.5">
+          
+          <!-- Campo de Busca Estilizado -->
+          <div class="relative flex items-center">
+            <span class="absolute left-4 text-wine flex items-center justify-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="searchInput" 
+              oninput="handleSearchInput(event)" 
+              placeholder="Buscar produtos (ex: cobreleito, toalha, cortina, tapete...)" 
+              class="w-full bg-cream/70 hover:bg-cream focus:bg-white border border-borderCream focus:border-wine rounded-full py-3 sm:py-3.5 pl-11 sm:pl-12 pr-10 text-xs sm:text-sm font-medium text-ink outline-none transition-all placeholder:text-muted/70"
+            >
+            <button 
+              id="clearSearchBtn" 
+              onclick="clearSearch()" 
+              class="hidden absolute right-3 w-6 h-6 rounded-full bg-borderCream/80 hover:bg-rose text-ink text-xs font-bold items-center justify-center transition"
+              title="Limpar busca"
+            >
+              ×
+            </button>
+          </div>
+
+          <!-- Pílulas de Filtro por Categoria -->
+          <div class="flex items-center justify-between gap-3 pt-1 border-t border-[#F8EFEA]">
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto hide-scrollbar py-1">
+              <button onclick="filterByCategory('Todos')" data-category="Todos" class="cat-pill-btn px-4 py-2 rounded-full bg-wine text-white text-xs font-bold whitespace-nowrap shadow-sm transition">Todos</button>
+              <button onclick="filterByCategory('Cama')" data-category="Cama" class="cat-pill-btn px-4 py-2 rounded-full bg-white border border-borderCream text-muted text-xs font-bold whitespace-nowrap hover:text-wine transition">🛏️ Cama</button>
+              <button onclick="filterByCategory('Sala')" data-category="Sala" class="cat-pill-btn px-4 py-2 rounded-full bg-white border border-borderCream text-muted text-xs font-bold whitespace-nowrap hover:text-wine transition">🛋️ Sala</button>
+              <button onclick="filterByCategory('Banho')" data-category="Banho" class="cat-pill-btn px-4 py-2 rounded-full bg-white border border-borderCream text-muted text-xs font-bold whitespace-nowrap hover:text-wine transition">🛁 Banho</button>
+              <button onclick="filterByCategory('Cortinas')" data-category="Cortinas" class="cat-pill-btn px-4 py-2 rounded-full bg-white border border-borderCream text-muted text-xs font-bold whitespace-nowrap hover:text-wine transition">🪟 Cortinas</button>
+            </div>
+            <span id="productsFoundCount" class="hidden sm:inline-block text-xs font-bold text-sage whitespace-nowrap px-3 py-1 rounded-full bg-sage/10">
+              8 produtos
+            </span>
+          </div>
+
+        </div>
+
+        <!-- GRID DE PRODUTOS -->
+        <div id="productsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-6">
+          <!-- Renderizado via JS -->
+        </div>
+
+      </section>
+
+      <!-- NOSSA HISTÓRIA & COMO COMPRAR -->
+      <section id="sobre" class="bg-wineDark text-white py-14 sm:py-20 my-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+          
+          <div>
+            <span class="text-xs font-bold uppercase tracking-[.2em] text-rose">Nossa História</span>
+            <h2 class="serif text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 leading-tight">
+              Comprar conosco é como receber uma visita de quem se importa.
+            </h2>
+            <p class="text-white/80 leading-relaxed mt-4 text-sm sm:text-base">
+              A <b>Casa Tia Rosa</b> nasceu do desejo genuíno de levar acolhimento e beleza a todos os lares. Cada peça é examinada antes do envio, com embalagens perfumadas e um atendimento caloroso.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mt-8">
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10 backdrop-blur-xs">
+                <b class="text-2xl text-rose font-bold block">01</b>
+                <h4 class="font-bold text-sm mt-1">Escolha com Calma</h4>
+                <p class="text-xs text-white/70 mt-1">Coloque na sacola e monte o pedido do seu jeito.</p>
+              </div>
+
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10 backdrop-blur-xs">
+                <b class="text-2xl text-rose font-bold block">02</b>
+                <h4 class="font-bold text-sm mt-1">Finalize no WhatsApp</h4>
+                <p class="text-xs text-white/70 mt-1">Confirmação direta, pagamento seguro e entrega rápida.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[32px] overflow-hidden aspect-square border-4 border-white/20 shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85" class="w-full h-full object-cover" alt="Ambiente decorado com amor">
+          </div>
+
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS DE CLIENTES -->
+      <section id="depoimentos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-[.18em] text-sage">Depoimentos Reais</span>
+          <h2 class="serif text-3xl sm:text-4xl text-ink font-bold mt-1">O que Nossas Clientes Dizem</h2>
+          <p class="text-muted text-sm mt-2">A satisfação de quem já encheu a casa de aconchego com a gente.</p>
+        </div>
+
+        <div id="testimonialsContainer" class="grid sm:grid-cols-3 gap-5">
+          <!-- Renderizado via JS -->
+        </div>
+      </section>
+
+      <!-- RODAPÉ -->
+      <footer class="bg-white border-t border-borderCream pt-10 sm:pt-14 pb-24 md:pb-12 text-sm text-muted">
+        <div class="footer-grid max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <!-- Coluna 1: Sobre & Social -->
+          <div class="space-y-3">
+            <div class="serif italic text-2xl sm:text-3xl text-wineDark font-bold leading-none">Casa Tia Rosa</div>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed max-w-xs">
+              Enxoval escolhido com carinho, peças selecionadas e atendimento acolhedor para transformar seu lar.
+            </p>
+            <div class="flex items-center gap-2.5 pt-1">
+              <a href="https://instagram.com/casadatiarosa" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-roseLight hover:bg-rose/40 text-wineDark text-xs font-bold transition border border-rose/40" title="Instagram">
+                <span>📸</span>
+                <span>Instagram</span>
+              </a>
+              <a href="https://wa.me/5588999999999" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-roseLight hover:bg-rose/40 text-wineDark text-xs font-bold transition border border-rose/40" title="WhatsApp">
+                <span>💬</span>
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Categorias -->
+          <div>
+            <h4 class="font-bold text-ink text-xs uppercase tracking-wider mb-3">Categorias Rápidas</h4>
+            <ul class="space-y-2 text-xs sm:text-sm">
+              <li><a href="#produtos" onclick="filterByCategory('Cama')" class="hover:text-wine transition">🛏️ Cobreleitos & Jogos de Cama</a></li>
+              <li><a href="#produtos" onclick="filterByCategory('Sala')" class="hover:text-wine transition">🛋️ Tapetes & Almofadas</a></li>
+              <li><a href="#produtos" onclick="filterByCategory('Banho')" class="hover:text-wine transition">🛁 Kits Toalhas de Banho</a></li>
+              <li><a href="#produtos" onclick="filterByCategory('Cortinas')" class="hover:text-wine transition">🪟 Cortinas & Blackouts</a></li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Formas de Pagamento -->
+          <div>
+            <h4 class="font-bold text-ink text-xs uppercase tracking-wider mb-3">Formas de Pagamento</h4>
+            <ul class="space-y-2 text-xs sm:text-sm">
+              <li class="flex items-center gap-1.5"><span>⚡</span> <span>Pix com aprovação imediata</span></li>
+              <li class="flex items-center gap-1.5"><span>💳</span> <span>Cartão em até 3x sem juros</span></li>
+              <li class="flex items-center gap-1.5"><span>💵</span> <span>Dinheiro na entrega</span></li>
+            </ul>
+          </div>
+
+          <!-- Coluna 4: Atendimento -->
+          <div>
+            <h4 class="font-bold text-ink text-xs uppercase tracking-wider mb-3">Atendimento</h4>
+            <p class="text-xs sm:text-sm text-muted leading-relaxed space-y-1">
+              <span class="block">🕒 Segunda a Sábado: 08h às 18h</span>
+              <span class="block">📱 WhatsApp: (88) 99999-9999</span>
+              <span class="block text-ink font-medium">✉️ contato@casadatiarosa.com.br</span>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-borderCream text-center text-xs text-muted flex flex-col sm:flex-row items-center justify-between gap-2">
+          <span>© 2026 Casa Tia Rosa — Todos os direitos reservados.</span>
+          <span class="text-[11px]">Desenvolvido com carinho para demonstração comercial.</span>
+        </div>
+      </footer>
+
+    </div><!-- Fim phone-screen-scroll -->
+
+    <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA (MOBILE BOTTOM NAV) -->
+    <nav class="bottom-nav sm:hidden">
+      <a href="#topo" onclick="scrollToSection('topo'); return false;" class="bottom-nav-item active">
+        <span class="text-base">🏠</span>
+        <span>Início</span>
+      </a>
+      <a href="#colecoes" onclick="scrollToSection('colecoes'); return false;" class="bottom-nav-item">
+        <span class="text-base">🛋️</span>
+        <span>Coleções</span>
+      </a>
+      <a href="#produtos" onclick="scrollToSection('produtos'); return false;" class="bottom-nav-item">
+        <span class="text-base">🏷️</span>
+        <span>Produtos</span>
+      </a>
+      <button onclick="openCart()" class="bottom-nav-item focus:outline-none">
+        <span class="text-base relative">
+          🧺
+          <span class="cart-count-badge hidden absolute -top-1.5 -right-2 bg-wine text-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </span>
+        <span>Sacola</span>
+      </button>
+      <a href="https://wa.me/5588999999999" target="_blank" class="bottom-nav-item">
+        <span class="text-base">💬</span>
+        <span>WhatsApp</span>
+      </a>
+    </nav>
+
+  </div><!-- Fim app-viewport-container -->
+
+
+  <!-- ========================================================== -->
+  <!-- MODAL / DRAWER DA SACOLA DE COMPRAS                        -->
+  <!-- ========================================================== -->
+  <div id="cartBackdrop" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden transition-opacity" onclick="closeCart()"></div>
+  
+  <aside id="cartDrawer" class="fixed top-0 right-0 z-[60] h-full w-full sm:max-w-[430px] bg-cream shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+    
+    <!-- Topo da Sacola -->
+    <div class="p-5 border-b border-borderCream bg-white flex items-center justify-between">
+      <div>
+        <h2 class="serif text-2xl text-wineDark font-bold">Sua Sacola</h2>
+        <p id="cartSubtitle" class="text-xs text-muted mt-0.5">0 itens</p>
+      </div>
+      <button onclick="closeCart()" class="w-9 h-9 rounded-full bg-cream border border-borderCream text-ink hover:bg-rose/30 text-lg flex items-center justify-center font-bold">
+        ×
+      </button>
+    </div>
+
+    <!-- Barra de Frete Grátis -->
+    <div class="bg-roseLight px-5 py-3 border-b border-borderCream">
+      <p id="freeShippingText" class="text-xs text-ink">
+        Faltam <b>R$ 300,00</b> para ganhar <b>Frete Grátis</b>
+      </p>
+      <div class="w-full h-2 bg-white rounded-full mt-2 overflow-hidden border border-borderCream">
+        <div id="freeShippingBar" class="h-full bg-wine rounded-full transition-all duration-500" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Lista de Itens -->
+    <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Renderizado via JS -->
+    </div>
+
+    <!-- Rodapé da Sacola com Cupom e Totais -->
+    <div class="p-5 border-t border-borderCream bg-white space-y-3">
+      
+      <!-- Cupom de Desconto -->
+      <div class="flex gap-2">
+        <input type="text" id="couponInput" placeholder="Cupom: TIAROSA10" class="flex-1 uppercase bg-cream border border-borderCream rounded-full px-4 py-2 text-xs font-bold tracking-wider focus:outline-none focus:border-wine">
+        <button onclick="applyCouponCode()" class="bg-wineDark text-white text-xs font-bold px-4 py-2 rounded-full hover:bg-wine transition">
+          Aplicar
+        </button>
+      </div>
+
+      <!-- Resumo Financeiro -->
+      <div class="space-y-1.5 pt-2 text-sm text-muted">
+        <div class="flex justify-between">
+          <span>Subtotal</span>
+          <span id="cartSubtotal" class="font-bold text-ink">R$ 0,00</span>
+        </div>
+        <div id="cartDiscountRow" class="flex justify-between text-sage font-bold hidden">
+          <span>Desconto</span>
+          <span id="cartDiscountAmount">- R$ 0,00</span>
+        </div>
+        <div class="flex justify-between text-base pt-2 border-t border-borderCream">
+          <span class="font-bold text-ink">Total</span>
+          <b id="cartTotal" class="text-xl text-wineDark font-bold">R$ 0,00</b>
+        </div>
+      </div>
+
+      <button onclick="startCheckout()" class="w-full bg-wine hover:bg-wineDark text-white rounded-full py-3.5 font-bold text-sm shadow-md transition active:scale-98 flex items-center justify-center gap-2">
+        <span>Finalizar Pedido</span>
+        <span>→</span>
+      </button>
+
+      <p class="text-[11px] text-center text-muted">
+        🔒 Compra 100% segura • Atendimento pelo WhatsApp
+      </p>
+    </div>
+
+  </aside>
+
+
+  <!-- ========================================================== -->
+  <!-- MODAL DE DETALHES DO PRODUTO                               -->
+  <!-- ========================================================== -->
+  <div id="productModal" class="fixed inset-0 z-[65] bg-black/60 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl border border-borderCream">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-cream border border-borderCream flex items-center justify-center text-ink font-bold hover:bg-rose/30">
+        ×
+      </button>
+      <div id="productModalContent">
+        <!-- Renderizado dinamicamente -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================== -->
+  <!-- MODAL DE VISUALIZAÇÃO DE STORIES                           -->
+  <!-- ========================================================== -->
+  <div id="storyModal" class="fixed inset-0 z-[65] bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-ink text-white rounded-3xl max-w-sm w-full overflow-hidden shadow-2xl relative border border-white/20">
+      <button onclick="closeStoryModal()" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-black/60 text-white font-bold flex items-center justify-center">
+        ×
+      </button>
+      <div class="aspect-[9/14] relative bg-black">
+        <img id="storyModalImg" src="" alt="Story" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40"></div>
+        <div class="absolute top-4 left-4 flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-wine flex items-center justify-center text-xs font-bold">🌸</div>
+          <span id="storyModalTitle" class="font-bold text-sm">Casa Tia Rosa</span>
+        </div>
+        <div class="absolute bottom-6 left-6 right-6">
+          <p id="storyModalText" class="text-sm text-white/90 leading-relaxed font-medium"></p>
+          <button onclick="closeStoryModal(); scrollToSection('produtos')" class="mt-4 w-full bg-wine text-white py-2.5 rounded-full text-xs font-bold hover:bg-wineDark transition">
+            Ver Produtos Relacionados
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================================== -->
+  <!-- MODAL DE CHECKOUT EM 3 ETAPAS COM WHATSAPP & PIX           -->
+  <!-- ========================================================== -->
+  <div id="checkoutModal" class="fixed inset-0 z-[75] hidden bg-cream overflow-y-auto">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+      
+      <!-- Topo Checkout -->
+      <div class="flex items-center justify-between pb-6 border-b border-borderCream mb-8">
+        <button onclick="closeCheckout()" class="text-xs sm:text-sm font-bold text-muted hover:text-wine flex items-center gap-1.5">
+          <span>←</span> <span>Voltar para a loja</span>
+        </button>
+        <div class="serif italic text-2xl text-wineDark font-bold">Casa Tia Rosa</div>
+      </div>
+
+      <!-- Barra de Progresso em 3 Passos -->
+      <div class="max-w-xl mx-auto mb-10">
+        <div class="grid grid-cols-3 gap-2 text-center relative">
+          
+          <div class="relative step-line">
+            <div id="stepIndicator1" class="step-active relative z-10 mx-auto w-10 h-10 rounded-full border-2 flex items-center justify-center text-xs font-bold transition">1</div>
+            <p id="stepLabel1" class="text-xs font-bold mt-2 text-wineDark">1. Sacola</p>
+          </div>
+
+          <div class="relative step-line">
+            <div id="stepIndicator2" class="relative z-10 mx-auto w-10 h-10 rounded-full border-2 border-borderCream bg-white flex items-center justify-center text-xs font-bold text-muted transition">2</div>
+            <p id="stepLabel2" class="text-xs font-medium mt-2 text-muted">2. Entrega</p>
+          </div>
+
+          <div class="relative">
+            <div id="stepIndicator3" class="relative z-10 mx-auto w-10 h-10 rounded-full border-2 border-borderCream bg-white flex items-center justify-center text-xs font-bold text-muted transition">3</div>
+            <p id="stepLabel3" class="text-xs font-medium mt-2 text-muted">3. Pagamento</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PASSO 1: REVISÃO DOS ITENS -->
+      <div id="stepScreen1" class="bg-white rounded-3xl border border-borderCream p-6 sm:p-8 shadow-card max-w-2xl mx-auto">
+        <h2 class="serif text-2xl sm:text-3xl text-ink font-bold">Revisar Pedido</h2>
+        <p class="text-muted text-xs sm:text-sm mt-1">Confira as peças selecionadas antes de preencher o endereço.</p>
+        
+        <div id="checkoutItemsReview" class="mt-6 divide-y divide-[#F5EBE6]">
+          <!-- Renderizado via JS -->
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-borderCream space-y-2 text-sm">
+          <div class="flex justify-between text-muted">
+            <span>Subtotal dos Produtos</span>
+            <b id="checkoutSubtotal" class="text-ink">R$ 0,00</b>
+          </div>
+          <div id="checkoutDiscountRow" class="flex justify-between text-sage font-bold hidden">
+            <span>Desconto</span>
+            <b id="checkoutDiscount">- R$ 0,00</b>
+          </div>
+          <div class="flex justify-between text-lg pt-3 border-t border-borderCream">
+            <span class="font-bold text-ink">Total</span>
+            <b id="checkoutFinalTotal" class="text-2xl text-wineDark font-bold">R$ 0,00</b>
+          </div>
+        </div>
+
+        <button onclick="goToStep(2)" class="w-full bg-wine text-white rounded-full py-4 mt-8 font-bold text-sm hover:bg-wineDark shadow-md transition">
+          Avançar para Dados de Entrega →
+        </button>
+      </div>
+
+      <!-- PASSO 2: DADOS DE ENTREGA -->
+      <div id="stepScreen2" class="hidden bg-white rounded-3xl border border-borderCream p-6 sm:p-8 shadow-card max-w-2xl mx-auto">
+        <h2 class="serif text-2xl sm:text-3xl text-ink font-bold">Onde vamos entregar?</h2>
+        <p class="text-muted text-xs sm:text-sm mt-1">Preencha seus dados para organizarmos seu pacote com carinho.</p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mt-6">
+          <label class="text-xs font-bold text-ink">
+            Nome Completo *
+            <input id="checkoutName" class="field" placeholder="Ex: Maria Oliveira" required>
+          </label>
+
+          <label class="text-xs font-bold text-ink">
+            WhatsApp para Contato *
+            <input id="checkoutPhone" class="field" placeholder="(88) 99999-9999" required>
+          </label>
+
+          <label class="text-xs font-bold text-ink sm:col-span-2">
+            Endereço Completo com Número e Bairro *
+            <input id="checkoutAddress" class="field" placeholder="Rua das Flores, 123, Bairro Centro" required>
+          </label>
+
+          <label class="text-xs font-bold text-ink">
+            Cidade *
+            <input id="checkoutCity" class="field" placeholder="Juazeiro do Norte" value="Juazeiro do Norte">
+          </label>
+
+          <label class="text-xs font-bold text-ink">
+            Ponto de Referência / Obs.
+            <input id="checkoutObs" class="field" placeholder="Próximo à pracinha, casa verde">
+          </label>
+        </div>
+
+        <div class="flex gap-3 mt-8">
+          <button onclick="goToStep(1)" class="flex-1 border border-borderCream rounded-full py-3.5 font-bold text-xs sm:text-sm hover:bg-cream">
+            ← Voltar
+          </button>
+          <button onclick="goToStep(3)" class="flex-1 bg-wine text-white rounded-full py-3.5 font-bold text-xs sm:text-sm hover:bg-wineDark shadow-md">
+            Continuar para Pagamento →
+          </button>
+        </div>
+      </div>
+
+      <!-- PASSO 3: FORMA DE PAGAMENTO -->
+      <div id="stepScreen3" class="hidden bg-white rounded-3xl border border-borderCream p-6 sm:p-8 shadow-card max-w-2xl mx-auto">
+        <h2 class="serif text-2xl sm:text-3xl text-ink font-bold">Forma de Pagamento</h2>
+        <p class="text-muted text-xs sm:text-sm mt-1">Escolha como prefere acertar seu pedido.</p>
+
+        <div class="grid sm:grid-cols-3 gap-3.5 mt-6">
+          <label class="pay-option">
+            <input type="radio" name="paymentMethod" value="Pix" checked>
+            <div>
+              <span>⚡ Pix</span>
+              <small>Aprovação rápida e desconto</small>
+            </div>
+          </label>
+
+          <label class="pay-option">
+            <input type="radio" name="paymentMethod" value="Cartão de Crédito">
+            <div>
+              <span>💳 Cartão</span>
+              <small>Até 3x sem juros</small>
+            </div>
+          </label>
+
+          <label class="pay-option">
+            <input type="radio" name="paymentMethod" value="Dinheiro">
+            <div>
+              <span>💵 Dinheiro</span>
+              <small>Acerto na entrega</small>
+            </div>
+          </label>
+        </div>
+
+        <!-- Box Resumo Final -->
+        <div class="rounded-2xl bg-cream p-5 mt-6 border border-borderCream space-y-2">
+          <div class="flex justify-between text-sm text-muted">
+            <span>Total dos Produtos:</span>
+            <b id="step3TotalDisplay" class="text-ink">R$ 0,00</b>
+          </div>
+          <div class="flex justify-between text-sm text-muted">
+            <span>Entrega:</span>
+            <b class="text-sage">A combinar pelo WhatsApp</b>
+          </div>
+          <p class="text-[11px] text-muted pt-2 border-t border-borderCream">
+            Ao clicar em <b>Finalizar Pedido</b>, você receberá a confirmação e o resumo completo será preparado para envio direto à Tia Rosa pelo WhatsApp.
+          </p>
+        </div>
+
+        <div class="flex gap-3 mt-8">
+          <button onclick="goToStep(2)" class="flex-1 border border-borderCream rounded-full py-3.5 font-bold text-xs sm:text-sm hover:bg-cream">
+            ← Voltar
+          </button>
+          <button onclick="finishOrder()" class="flex-1 bg-wine text-white rounded-full py-3.5 font-bold text-xs sm:text-sm hover:bg-wineDark shadow-md">
+            Finalizar Pedido ✨
+          </button>
+        </div>
+      </div>
+
+      <!-- TELA DE SUCESSO DO PEDIDO -->
+      <div id="stepSuccess" class="hidden text-center bg-white rounded-3xl border border-borderCream p-8 sm:p-12 shadow-card max-w-xl mx-auto">
+        <div class="w-16 h-16 mx-auto rounded-full bg-roseLight text-wine text-3xl flex items-center justify-center font-bold shadow-xs">
+          ✓
+        </div>
+        
+        <span id="successOrderNumber" class="inline-block mt-4 text-xs uppercase font-bold tracking-widest text-muted bg-cream px-3 py-1 rounded-full">
+          #102938
+        </span>
+
+        <h2 class="serif text-3xl sm:text-4xl text-wineDark font-bold mt-2">Pedido Recebido com Carinho!</h2>
+        <p class="text-muted text-sm max-w-md mx-auto mt-2 leading-relaxed">
+          Seu pedido foi registrado. Agora é só enviar a confirmação para a Tia Rosa no WhatsApp para combinarmos o horário de entrega.
+        </p>
+
+        <!-- Chave Pix para Facilidade de Demonstração -->
+        <div class="mt-6 p-4 bg-roseLight rounded-2xl border border-rose/60 max-w-md mx-auto text-left">
+          <div class="flex items-center justify-between">
+            <b class="text-xs text-wineDark uppercase font-bold">Chave Pix (E-mail):</b>
+            <button onclick="copyPixKey()" class="text-xs bg-white text-wine font-bold px-3 py-1 rounded-full border border-rose hover:bg-wine hover:text-white transition">
+              Copiar Chave
+            </button>
+          </div>
+          <p class="text-xs text-ink font-mono mt-1 font-semibold">pix@casadatiarosa.com.br</p>
+        </div>
+
+        <div class="mt-8 space-y-3 max-w-md mx-auto">
+          <button onclick="openWhatsAppOrder()" class="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white rounded-full py-4 font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+            <span>💬</span>
+            <span>Confirmar Pedido pelo WhatsApp</span>
+          </button>
+
+          <button onclick="closeCheckout(); scrollToSection('topo');" class="w-full text-xs font-bold text-muted hover:text-wine py-2">
+            Voltar para a Página Inicial
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- TOAST DE NOTIFICAÇÃO -->
+  <div id="appToast" class="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-[100] bg-ink text-white px-6 py-3 rounded-full text-xs sm:text-sm font-bold shadow-2xl opacity-0 translate-y-4 pointer-events-none transition-all duration-300 flex items-center gap-2">
+    <span>🌸</span>
+    <span>Notificação</span>
+  </div>
+
+  <!-- SCRIPTS MODULARES -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
